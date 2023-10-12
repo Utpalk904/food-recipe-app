@@ -25,17 +25,8 @@ export const CachedImage = (props) => {
                     setCachedSource({ uri: base64Data });
                 }
             } catch (error) {
-                const response = await fetch(uri);
-                const imageBlob = await response.blob();
-                const base64Data = await new Promise((resolve) => {
-                    const reader = new FileReader();
-                    reader.readAsDataURL(imageBlob);
-                    reader.onloadend = () => {
-                        resolve(reader.result);
-                    }
-                });
-                setCachedSource({ uri: base64Data });
-                // console.error('Error caching images : ', error);
+                setCachedSource({ uri });
+                console.log('Error caching images : ', error);
             }
         }
 

@@ -37,9 +37,9 @@ const RecipeCard = ({ item, index, navigation }) => {
     return (
         <Animated.View entering={FadeInDown.delay(index * 100).duration(600).springify().damping(12)} className={`${isEven ? 'pr-2' : 'pl-2'} my-1.5`}>
             <Pressable className='w-full flex' onPress={()=> navigation.navigate('RecipeDetails', {...item})} >
-                {/* <Image source={{ uri: item.strMealThumb }} style={{ height: index % 3 === 0 ? hp(23) : hp(33) }} className='w-full rounded-3xl' /> */}
-                <CachedImage style={{ height: index % 3 === 0 ? hp(23) : hp(33) }} className='w-full rounded-3xl' uri={item.strMealThumb} />
-                <Text className='text-neutral-600 ml-3 mt-1' style={{ fontFamily: 'Montserrat-SemiBold', fontSize: hp(1.8) }}>
+                <Animated.Image source={{ uri: item.strMealThumb }} style={{ height: index % 3 === 0 ? hp(23) : hp(33) }} className='w-full rounded-3xl' sharedTransitionTag={item.strMeal} />
+                {/* <CachedImage style={{ height: index % 3 === 0 ? hp(23) : hp(33) }} className='w-full rounded-3xl' uri={item.strMealThumb}/> */}
+                <Text className='text-neutral-600 ml-3 mt-1' style={{ fontFamily: 'Montserrat-SemiBold', fontSize: hp(1.8) }} >
                     {item.strMeal.length > 18 ? item.strMeal.slice(0, 18) + '...' : item.strMeal}
                 </Text>
             </Pressable>
